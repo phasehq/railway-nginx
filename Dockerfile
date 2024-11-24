@@ -9,7 +9,7 @@ COPY nginx.conf /etc/nginx/templates/default.conf.template
 # Create the script that will generate the final config and start nginx
 RUN echo '#!/bin/sh\n\
 envsubst \
-    "\${FRONTEND_HOST} \${BACKEND_HOST}" \
+    "\${FRONTEND_HOST} \${BACKEND_HOST} \${ALLOWED_HOSTS}" \
     < /etc/nginx/templates/default.conf.template \
     > /etc/nginx/conf.d/default.conf\n\
 \n\
